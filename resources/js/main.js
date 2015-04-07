@@ -1,9 +1,23 @@
 'use strict';
 
+$('body').css('display', 'none')
+if (!$.cookie('daanscholtennlaccess')) {
+  var getAccess = prompt("Deze site is onder constructie en is afgesloten voor publiek.", "")
+  if (getAccess == 'abracadabra') {
+    $.cookie('daanscholtennlaccess', 'granted')
+    $('body').css('display', 'block')
+  }
+  else {
+    window.close()
+  }
+}
+else {  
+  $('body').css('display', 'block')
+}
 
 (function($, window, document) {
   var alreadyClicked = false
-  
+
   $(function() {
     /* Fade in content */
     setTimeout(function() {
@@ -79,8 +93,6 @@
       }
     )
   }
-
-
 }(window.jQuery, window, document))
 
 /* AddThis stuff */
